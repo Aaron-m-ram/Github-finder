@@ -7,7 +7,8 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import {} from '@fortawesome/free-regular-svg-icons'
 import {} from '@fortawesome/free-solid-svg-icons' */
 
-
+/* just the red bar on top. you have props to define the classname which gives you the icon as well as the title. 
+    you hvae them required to be strings as well */
 const Navbar = ({icon, title}) => {
         return (
             <nav className="navbar bg-primary">

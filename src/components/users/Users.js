@@ -3,6 +3,9 @@ import UserItem from './UserItem'
 import Spinner from '../layout/Spinner'
 import PropTypes from 'prop-types'
 
+/* if the page is still loading it will return the loading screen else it will do an array map of the user with the user items 
+    requires the user to array and loading to be a boolean
+    have userStyle to dictate how the users will pop up*/
 
 const Users = ({users, loading})=> {
         if(loading){
