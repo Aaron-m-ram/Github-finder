@@ -13,13 +13,18 @@ export class search extends Component {
         searchUsers: PropTypes.func.isRequired,
         clearUsers: PropTypes.func.isRequired,
         showClear: PropTypes.bool.isRequired,
+        setAlert: PropTypes.func.isRequired,
         
     };
 
     onSubmit = (e) =>{
         e.preventDefault();
-        this.props.searchUsers(this.state.text); //props the text to app.js for centralization
-        this.setState({text: ''}); //clears the state after the prop is sent up
+        if(this.state.text === ''){
+            this.props.setAlert('Please enter something','light');
+        }else{
+            this.props.searchUsers(this.state.text); //props the text to app.js for centralization
+            this.setState({text: ''}); //clears the state after the prop is sent up
+        }
     }
     /* e.target.name is so it can be used over and over again not having to retyp name if its email input then date input then last name input etc. */
     onChange = e => this.setState({[e.target.name]: e.target.value})

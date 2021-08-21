@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Navbar from './components/layout/Navbar'
 import Users from './components/users/Users';
 import Search from './components/users/Search'
+import Alert from './components/layout/Alert'
 import axios from 'axios';
 import './App.css';
 
@@ -17,7 +18,8 @@ import {} from '@fortawesome/free-solid-svg-icons' */
 class App extends Component{
   state = {
     users: [],
-    loading: false
+    loading: false,
+    alert: null
   }
 
 /*   async componentDidMount(){
@@ -36,6 +38,12 @@ class App extends Component{
   //clear users from states
   clearUsers = () => this.setState({ users: [], loading: false});
 
+  //set Alert
+  setAlert = (msg, type) => {
+    this.setState({ alert: {msg, type}});
+    setTimeout(() => this.setState({alert: null}), 5000)
+  }
+
   render(){
     const {users, loading} = this.state;
     
@@ -44,7 +52,13 @@ class App extends Component{
       <div className="App">
         <Navbar/>     
         <div className='container'>
-          <Search searchUsers={this.searchUsers} clearUsers={this.clearUsers} showClear={users.length > 0 ? true : false}/> {/* this is passed from the search.js to be able to get the text for searchUsers method in here */}
+          <Alert alert={this.state.alert} />
+          <Search 
+            searchUsers={this.searchUsers} 
+            clearUsers={this.clearUsers} 
+            showClear={users.length > 0 ? true : false} /* this is passed from the search.js to be able to get the text for searchUsers method in here */
+            setAlert={this.setAlert}
+          />
           <Users loading ={loading} users={users}/> 
         </div>      
       </div>
