@@ -15,8 +15,9 @@ const Navbar = ({icon, title}) => {
                 <h1>
                     <i className={icon} /> {title}
                 </h1>
-                <ul>
-                    <li>
+                <ul> {/* From here down is the links on the right side
+                         we used link instead of a due to wanting to keep state */}
+                    <li> 
                         <Link to="/">Home</Link>
                     </li>
                     <li>

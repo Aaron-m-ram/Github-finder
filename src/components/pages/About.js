@@ -1,5 +1,7 @@
 import React, {Fragment} from 'react'
 
+
+//a simple about page to show how route will work with just one component
 const About = () => {
     return (
         <Fragment>
